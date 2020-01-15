@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.gmall.manager.mapper.AttrInfoMapper">
+    <resultMap id="attrInfoValue" type="com.gmall.beans.PmsBaseAttrInfo">
+        <result column="id" property="id"></result>
+        <result column="attr_name" property="attrName"></result>
+        <result column="catalog3_id" property="catalog3Id"></result>
+        <result column="is_enabled" property="isEnabled"></result>
+        <collection property="attrValueList" ofType="com.gmall.beans.PmsBaseAttrValue">
+            <id column="vid" property="id"></id>
+            <result column="value_name" property="valueName"></result>
+            <result column="vis" property="attrId"></result>
+        </collection>
+    </resultMap>
+
+    <select id="getAttrValueList" resultMap="attrInfoValue" parameterType="java.lang.String">
+         SELECT io.* , va.id vid , va.value_name , va.is_enabled vis FROM pms_base_attr_info io , pms_base_attr_value va where io.id = va.attr_id and io.id = #{attrId}
+    </select>
+</mapper>

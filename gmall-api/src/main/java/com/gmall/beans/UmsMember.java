@@ -1,7 +1,6 @@
-package com.gmall.user.bean;
+package com.gmall.beans;
 
-import org.springframework.data.annotation.Id;
-
+import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Date;
 

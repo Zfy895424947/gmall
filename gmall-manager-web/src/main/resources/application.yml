@@ -1,0 +1,24 @@
+server:
+  port: 8081
+spring:
+  #dubbo配置
+  dubbo:
+    application: manager-web
+    #dubbo通讯协议名称
+    protocol:
+      name: dubbo
+    #zookeeper的注册中心地址
+    registry:
+      address: 47.110.239.179:2181
+      #zookeeper的通讯协议名称
+      protocol: zookeeper
+    #dubbo服务扫描路径
+    base-package: com.gmall
+    consumer:
+      #设置dubbo超时时间
+      timeout: 600000
+      #设置是否检查服务存在
+      check: false
+logging:
+  level:
+    root: info
