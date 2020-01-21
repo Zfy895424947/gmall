@@ -1,0 +1,43 @@
+#端口号
+server:
+  port: 8013
+#jdbc数据源
+spring:
+  datasource:
+    url: jdbc:mysql://47.110.239.179:3306/guli?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Hongkong
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      minimum-idle: 3
+      maximum-pool-size: 10
+      max-lifetime: 30000
+      connection-test-query: SELECT 1
+  #dubbo配置
+  dubbo:
+    application: redis-test1
+    #dubbo通讯协议名称
+    protocol:
+      name: dubbo
+    #zookeeper的注册中心地址
+    registry:
+      address: 47.110.239.179:2181
+      #zookeeper的通讯协议名称
+      protocol: zookeeper
+    #dubbo服务扫描路径
+    base-package: com.gmall
+  #配置redis
+  redis:
+    host: 47.110.239.179
+    port: 6379
+    database: 0
+    password: 123456
+#mybatis配置
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: true
+#日志级别
+logging:
+  level:
+    root: info
